@@ -24,12 +24,15 @@
 [![MIT License][license-image]][license-url]
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FOHIF%2FViewers.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FOHIF%2FViewers?ref=badge_shield)
 
-[![Netlify Status][netlify-image]][netlify-url]
 [![CircleCI][circleci-image]][circleci-url]
 [![codecov][codecov-image]][codecov-url]
 [![This project is using Percy.io for visual regression testing.][percy-image]](percy-url)
 [![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors)
 <!-- prettier-ignore-end -->
+
+## StartUp
+
+npm run dev
 
 ## About
 
@@ -78,9 +81,9 @@ forking).
 We offer support through
 [GitHub Issues](https://github.com/OHIF/Viewers/issues/new/choose). You can:
 
-- [Report a Bug 🐛](https://github.com/OHIF/Viewers/issues/new?assignees=&labels=Community%3A+Report+%3Abug%3A&template=---bug-report.md)
-- [Request a Feature 🚀](https://github.com/OHIF/Viewers/issues/new?assignees=&labels=Community%3A+Request+%3Ahand%3A&template=---feature-request.md)
-- [Ask a Question 🤗](https://github.com/OHIF/Viewers/issues/new?assignees=&labels=Community%3A+Question+%3Aquestion%3A&template=---support-question.md)
+- [Report a Bug ](https://github.com/OHIF/Viewers/issues/new?assignees=&labels=Community%3A+Report+%3Abug%3A&template=---bug-report.md)
+- [Request a Feature ](https://github.com/OHIF/Viewers/issues/new?assignees=&labels=Community%3A+Request+%3Ahand%3A&template=---feature-request.md)
+- [Ask a Question ](https://github.com/OHIF/Viewers/issues/new?assignees=&labels=Community%3A+Question+%3Aquestion%3A&template=---support-question.md)
 
 For commercial support, academic collaberations, and answers to common
 questions; please read our
@@ -139,7 +142,7 @@ deployment recipe.
 
 ### Getting Started
 
-1. [Fork this repository][how-to-fork]
+1. [Fork this repository](https://github.com/OHIF/Viewers)
 2. [Clone your forked repository][how-to-clone]
    - `git clone https://github.com/YOUR-USERNAME/Viewers.git`
 3. Navigate to the cloned project's directory
@@ -152,8 +155,23 @@ deployment recipe.
 _From this repository's root directory:_
 
 ```bash
+
+# 用管理员权限执行:
+npm config set registry https://registry.npm.taobao.org --global
+npm config set disturl https://npm.taobao.org/dist --global
+npm config set python /usr/bin/python  # (maxos系统 python2.7)
+
+yarn config set registry https://registry.npm.taobao.org --global
+yarn config set disturl https://npm.taobao.org/dist --global
+ 
+yarn cache clean
+
 # Enable Yarn Workspaces
 yarn config set workspaces-experimental true
+
+npm i -g node-gyp 
+npm i -g node-sass 
+npm i -d 
 
 # Restore dependencies
 yarn install

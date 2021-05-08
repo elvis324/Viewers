@@ -1,1 +1,14 @@
-{}
+{
+  "Browser": "浏览器",
+  "Build Number": "构建代码",
+  "Latest Master Commits": "最后提交",
+  "More details": "更新详情",
+  "Name": "名称",
+  "OHIF Viewer - About": "关于Viewers",
+  "OS": "OS",
+  "Report an issue": "发布版本",
+  "Repository URL": "代码仓库 URL",
+  "Value": "值",
+  "Version Information": "版本信息",
+  "Visit the forum": "访问论坛"
+}

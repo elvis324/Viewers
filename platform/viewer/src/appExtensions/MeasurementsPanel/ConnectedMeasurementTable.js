@@ -68,11 +68,14 @@ function getDataForEachMeasurementNumber(
   const data = [];
   // on each measurement number we should get each measurement data by available timepoint
   measurementNumberList.forEach(measurement => {
+    //console.log(measurement)
     timepoints.forEach(timepoint => {
+      //console.log(timepoint)
       const eachData = {
         displayText: '...',
       };
       if (measurement.timepointId === timepoint.timepointId) {
+
         eachData.displayText = displayFunction(measurement);
       }
       data.push(eachData);
@@ -199,7 +202,7 @@ function convertTimepointsToTableData(timepoints) {
     {
       label: 'Study date:',
       key: 'StudyDate',
-      date: moment(timepoints[0].latestDate).format('DD-MMM-YY'),
+      date: moment(timepoints[0].latestDate).format('YYYY-MM-DD'),
     },
   ];
 }

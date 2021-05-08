@@ -1,9 +1,9 @@
 {
-  "name": "OHIF Viewer",
-  "short_name": "Viewer",
-  "description": "OHIF Viewer",
+  "name": "Smart PACS Viewer",
+  "short_name": "PACS Viewer",
+  "description": "Smart PACS Viewer",
   "dir": "auto",
-  "lang": "en-US",
+  "lang": "zh",
   "orientation": "any",
   "icons": [
     {

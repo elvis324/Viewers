@@ -25,6 +25,7 @@
 }
 
 .dd-menu-list {
+  min-width: 100px;
   position: absolute;
   top: 100%;
   margin-top: 10px;

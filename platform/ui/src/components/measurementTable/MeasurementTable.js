@@ -85,7 +85,7 @@ class MeasurementTable extends Component {
               data-cy="save-measurements-btn"
             >
               <Icon name="save" width="14px" height="14px" />
-              Save measurements
+              保存测量值
             </button>
           )}
         </div>

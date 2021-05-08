@@ -2,7 +2,8 @@
   "Empty": "无",
   "Modality": "成像设备",
   "PatientName": "患者姓名",
+  "Description":"描述",
   "StudyDate": "检查日期",
   "StudyDescription": "描述",
-  "StudyList": "检查列表"
+  "StudyList": "研究列表"
 }
