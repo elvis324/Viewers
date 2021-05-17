@@ -240,6 +240,44 @@ These projects comprise the
 | [@ohif/viewer][platform-viewer] | The OHIF Viewer. Where we consume and configure all platform library's and extensions                | [NPM][viewer-npm] |
 | [@ohif/ui][platform-ui]         | Reusable React components we consume and compose to build our Viewer's UI                            | [NPM][ui-npm]     |
 
+### Bugs List
+
+2021年05月08日： 点击查看 2DMPR时报错
+
+![img.png](bugs/img0.png)
+![img.png](bugs/img.png)
+
+Viewer/extensions/vtk
+
+vtk.js bug :https://sourcegraph.com/github.com/Kitware/vtk-js/-/blob/Sources/Rendering/OpenGL/VolumeMapper/index.js#L492
+
+```
+      // compile and bind the program if needed
+      const newShader = model.openGLRenderWindow  //一直为null
+        .getShaderCache()
+        .readyShaderProgramArray(
+          shaders.Vertex,
+          shaders.Fragment,
+          shaders.Geometry
+      );
+
+      // if the shader changed reinitialize the VAO
+      if (newShader !== cellBO.getProgram()) {  //此处应该优化为： if (newShader!=null && newShader !== cellBO.getProgram()) 
+        cellBO.setProgram(newShader);
+        // reset the VAO as the shader has changed
+        cellBO.getVAO().releaseGraphicsResources();
+      }
+
+      cellBO.getShaderSourceTime().modified();
+    } else {
+      model.openGLRenderWindow
+        .getShaderCache()
+        .readyShaderProgram(cellBO.getProgram());
+    }
+
+
+```
+
 ### Extensions
 
 This is a list of Extensions maintained by the OHIF Core team. It's possible to
