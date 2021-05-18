@@ -249,9 +249,14 @@ These projects comprise the
 
 Viewer/extensions/vtk
 
+
+
+
 vtk.js bug :https://sourcegraph.com/github.com/Kitware/vtk-js/-/blob/Sources/Rendering/OpenGL/VolumeMapper/index.js#L492
 
 ```
+      publicAPI.buildShaders(shaders, ren, actor);
+
       // compile and bind the program if needed
       const newShader = model.openGLRenderWindow  //一直为null
         .getShaderCache()
@@ -274,6 +279,11 @@ vtk.js bug :https://sourcegraph.com/github.com/Kitware/vtk-js/-/blob/Sources/Ren
         .getShaderCache()
         .readyShaderProgram(cellBO.getProgram());
     }
+
+----
+
+  const maxSamples =
+      vec3.length(vsize) / model.renderable.getSampleDistance();  // 一直返回NaN
 
 
 ```

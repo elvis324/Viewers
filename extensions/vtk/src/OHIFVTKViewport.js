@@ -93,6 +93,8 @@ class OHIFVTKViewport extends Component {
     SOPInstanceUID,
     frameIndex
   ) {
+    console.log("*** studies (list) ***");
+    console.log(studies);
     // Create shortcut to displaySet
     const study = studies.find(
       study => study.StudyInstanceUID === StudyInstanceUID
@@ -101,13 +103,17 @@ class OHIFVTKViewport extends Component {
     const displaySet = study.displaySets.find(set => {
       return set.displaySetInstanceUID === displaySetInstanceUID;
     });
-
+    console.log("---- study (single) ----");
+    console.log(study);
+    console.log("---- displaySet ----");
+    console.log(displaySet);
     // Get stack from Stack Manager
     const storedStack = StackManager.findOrCreateStack(study, displaySet);
 
     // Clone the stack here so we don't mutate it
     const stack = Object.assign({}, storedStack);
-
+    console.log("---- storedStack ----");
+    console.log(storedStack);
     if (frameIndex !== undefined) {
       stack.currentImageIdIndex = frameIndex;
     } else if (SOPInstanceUID) {
@@ -238,7 +244,8 @@ class OHIFVTKViewport extends Component {
     if (volumeCache[displaySetInstanceUID]) {
       return volumeCache[displaySetInstanceUID];
     }
-
+    console.log("-imageDataObject-");
+    console.log(imageDataObject);
     const { vtkImageData, imageMetaData0 } = imageDataObject;
     // TODO -> Should update react-vtkjs-viewport and react-cornerstone-viewports
     // internals to use naturalized DICOM JSON names.
@@ -267,9 +274,13 @@ class OHIFVTKViewport extends Component {
     const spacing = vtkImageData.getSpacing();
     // Set the sample distance to half the mean length of one side. This is where the divide by 6 comes from.
     // https://github.com/Kitware/VTK/blob/6b559c65bb90614fb02eb6d1b9e3f0fca3fe4b0b/Rendering/VolumeOpenGL2/vtkSmartVolumeMapper.cxx#L344
-    const sampleDistance = (spacing[0] + spacing[1] + spacing[2]) / 6;
-
-    volumeMapper.setSampleDistance(sampleDistance);
+    const sampleDistance =
+      (parseFloat(spacing[0]) +
+        parseFloat(spacing[1]) +
+        parseFloat(spacing[2])) /
+      6;
+    const sampleDistanceF = isNaN(sampleDistance) == true ? 0 : sampleDistance;
+    volumeMapper.setSampleDistance(sampleDistanceF);
 
     // Be generous to surpress warnings, as the logging really hurts performance.
     // TODO: maybe we should auto adjust samples to 1000.
